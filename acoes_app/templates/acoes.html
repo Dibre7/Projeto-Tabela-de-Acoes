@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciador de Ações</title>
+</head>
+<body>
+    <h1>Inserir Nova Ação</h1>
+    <form method="post">
+        {% csrf_token %}  <!-- Proteção contra CSRF -->
+        {{ form.as_p }}   <!-- Renderiza o form como parágrafos -->
+        <button type="submit">Enviar</button>
+    </form>
+
+    <h2>Tabela de Ações</h2>
+    <table border="1">
+        <tr>
+            <th>Código</th>
+            <th>Ação</th>
+            <th>Preço</th>
+        </tr>
+        {% for acao in acoes %}
+        <tr>
+            <td>{{ acao.codigo }}</td>
+            <td>{{ acao.acao }}</td>
+            <td>{{ acao.preco }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
